@@ -1,0 +1,172 @@
+@font-face {
+    font-family: Kocakote;
+    src: url("font.ttf");
+}
+
+
+body {
+    margin: 100px 20%;
+    margin-bottom: 32px;
+
+    font-feature-settings: "kern";
+    font-feature-settings: "kern" 1;
+    -webkit-font-feature-settings: "kern";
+    -moz-font-feature-settings: "kern";
+    -moz-font-feature-settings: "kern=1";
+    font-kerning: normal;
+}
+
+@media (max-width: 800px) {
+    body {
+        margin: 100px 32px;
+    }
+}
+
+h1, h2, h3, h4 {
+    font-family: Georgia, Times, TimesNewRoman, 'Times New Roman', serif;
+}
+
+h1 {
+    font-size: 42px;
+}
+
+h2 {
+    font-size: 28px;
+    padding-bottom: 5px;
+    border-bottom: #ccc solid 2px;
+    margin-top: 64px;
+}
+
+h3 {
+    font-size: 26px;
+}
+
+h4 > .k {
+    font-size: 75px;
+}
+
+p, label, li, th, td, footer {
+    font-family: 'Helvetica Neue', Helvetica, 'Nimbus Sans L', Arial, 'Liberation Sans', sans-serif;
+}
+
+p {
+    font-size: 22px;
+    text-align: justify;
+}
+
+p.k {
+    margin-top: 0px;
+    margin-bottom: 20px;
+    font-size: 65px;
+}
+
+.k {
+    font-family: Kocakote;
+    font-weight: normal;
+    font-size: 300%;
+    line-height: 30px;
+}
+
+input.k {
+    line-height: normal;
+}
+
+a {
+    color: inherit;
+}
+
+.displayfigure {
+    margin: auto;
+}
+
+footer {
+    text-align: center;
+    margin-top: 128px;
+}
+
+
+
+
+
+#toc > li > a {
+    text-decoration: none;
+}
+
+#toc > li > a:hover {
+    border-bottom: 1px solid black;
+}
+
+#writingSystemTable tr > td {
+    text-align: center;
+}
+
+#writingSystemTable tr > td:nth-child(even) {
+    background-color: #ccc;
+}
+
+#writingSystemTable tr > td:nth-child(odd) {
+    background-color: #ddd;
+}
+
+#writingSystemTable tr:nth-child(-n+2) > td {
+    font-size: 40px;
+}
+
+#writingSystemComparison {
+    border-spacing: 0;
+}
+
+#writingSystemComparison tr:first-child {
+    font-size: 20px;
+    text-align: center;
+}
+
+#writingSystemComparison tr:last-child {
+    font-size: 40px;
+}
+
+#writingSystemComparison td {
+    padding: 0;
+    min-width: 15px;
+}
+
+#activeTool {
+    margin-bottom: 32px;
+}
+
+.toolInput {
+    display: flex;
+}
+
+.toolInput > :first-child {
+    margin-right: 12px;
+}
+
+.toolInput > div {
+    display: flex;
+    flex-direction: column
+}
+
+.toolInput > div > :not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.toolTextOutput {
+    border: 1px solid gray;
+
+    font-family: Kocakote;
+    font-weight: normal;
+    font-size: 100px;
+}
+
+#verbTool {
+    display: flex;
+}
+
+#verbTool > :not(:last-child) {
+    margin-right: 24px;
+}
+
+#verbTool > .toolTextOutput {
+    flex-grow: 1;
+}
