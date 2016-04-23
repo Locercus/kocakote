@@ -84,6 +84,14 @@ footer {
     margin-top: 128px;
 }
 
+.ipa {
+    font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+}
+
+.ipa:before, .ipa:after {
+    content: '/';
+}
+
 
 
 
