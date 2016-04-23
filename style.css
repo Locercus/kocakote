@@ -98,6 +98,11 @@ footer {
 
 #writingSystemTable tr > td {
     text-align: center;
+    padding: 1px 4px;
+}
+
+#writingSystemTable tr:nth-child(2) > td {
+    padding-right: 8px;
 }
 
 #writingSystemTable tr > td:nth-child(even) {
