@@ -6,6 +6,11 @@
 }
 
 
+body, html { 
+    overflow-x: hidden; 
+    overflow-y: auto;
+}
+
 body {
     margin: 100px 20%;
     margin-bottom: 32px;
@@ -79,6 +84,8 @@ a {
 
 .displayfigure {
     margin: auto;
+    overflow: auto;
+    width: 100%;
 }
 
 footer {
@@ -183,5 +190,6 @@ footer {
 }
 
 #verbTool > .toolTextOutput {
+    width: 0;
     flex-grow: 1;
 }
