@@ -108,16 +108,40 @@ footer {
     content: '/';
 }
 
+table.small {
+    font-size: 12px;
+}
+
+table.chess {
+    border-collapse: collapse;
+}
+
+table.chess tr>* {
+    padding: 10px;
+}
+
+table.chess tr:nth-child(even)>td:nth-child(even), table.chess tr:nth-child(odd)>td:nth-child(odd) {
+    background-color: #ccc;
+}
+
+table.chess tr:nth-child(even)>td:nth-child(odd), table.chess tr:nth-child(odd)>td:nth-child(even) {
+    background-color: #ddd;
+}
+
+.definition {
+    margin-top: 16px;
+    font-size: 16px;
+}
 
 
 
 
-#toc > li > a {
+#toc li > a {
     text-decoration: none;
     border-bottom: 2px solid black;
 }
 
-#toc > li > a:hover {
+#toc li > a:hover {
     border-bottom: none;
 }
 
@@ -158,6 +182,10 @@ footer {
 #writingSystemComparison td {
     padding: 0;
     min-width: 15px;
+}
+
+#endingtable {
+    min-width: 1010px;
 }
 
 #activeTool {
