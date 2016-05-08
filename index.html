@@ -312,22 +312,22 @@
 
         <h2>Translations <span class="k">kotakonošu</span></h2>
         <h3>The Declaration of Human Rights <span class="k">kotonosu koladašu šødekačiko</span></h3>
-        <h4>(1) <span class="k">kočibunasoko teså</span></h4>
+        <h4 data-nonum>(1) <span class="k">kočibunasoko teså</span></h4>
         <p class="k">
             kočiši kotonosi čonaku'tudeka kolønanå tolo kodekanobe kišåtanudø tolo kiladano.čoseka benakuloče tolo bedasokatø tolo čobetutu deča sæsino'såto šøsitonoča.
         </p>
 
-        <h4>(2) <span class="k">kočibunasoko tæså</span></h4>
+        <h4 data-nonum>(2) <span class="k">kočibunasoko tæså</span></h4>
         <p class="k">
             kočune koladaba tolo koløna'såno kodisini'tiba disune didekačiko sabila čelalika načiši natonono čølane čøne'sabi'kusåko, čulo sæbanedø, sæsinote šøkolodø, sæsenote, sælinodø, sækakunite, sæbolitikoča nelo sæšuneto sæčoniko, sænasinosa nelo sæsočikæ sædeneličø, sæse'kočø, sænaku'tuko nelo sæšune sæsatoko. sobu, konane kone'sabi'kusåko detu'tatu sæbolitikobi, sækonečakitolakæ nelo kanasino'nøsa kabositisošå sælanoko nelo sætekoniko, sækune dobanika kotonočø kokonabi, čøkoniko čulo denika kone'denikæ, šenenelakinuča, kone'nenekatakæ nelo šečane šešune šešonola'såčø šølina'kuto.
         </p>
 
-        <h4>(3) <span class="k">kočibunasoko tøså</span></h4>
+        <h4 data-nonum>(3) <span class="k">kočibunasoko tøså</span></h4>
         <p class="k">
             kočiši čonaka beladano kisosoča, kiløna'såto tolo kinenosa kisekulato.
         </p>
 
-        <h4>(4) <span class="k">kočibunasoko tåså</span></h4>
+        <h4 data-nonum>(4) <span class="k">kočibunasoko tåså</span></h4>
         <p class="k">
             koniši lotali'tatu disano'såto nelo disetokača. kosano'såto tolo kosanoto šøšečisi'såto šene'kanu'titu kičune kišåčo kidodobæ.
         </p>
@@ -414,26 +414,34 @@
 
             // Table of Contents
             var toc = $('#toc')[0];
-            var titles = $('h2,h3');
+            var titles = $('h2,h3,h4');
             var lastH2 = null;
+            var lastH3 = null;
             for (var i = 1; i < titles.length; i++) {
                 var title = titles[i];
+                if ('nonum' in title.dataset)
+                    continue;
+
                 var li = document.createElement('li');
                 var a = document.createElement('a');
                 li.appendChild(a);
                 a.innerHTML = title.innerHTML;
                 if (title.id == "")
-                    title.id = title.childNodes[1].textContent.replace(/\s/g, '_').replace(/[^\wščæøå]/ig, '');
+                    title.id = title.childNodes[1].textContent.trim().replace(/\s/g, '_').replace(/[^\wščæøå]/ig, '');
                 a.href = "#" + title.id;
+                var ul = document.createElement('ul');
+                li.appendChild(ul);
 
                 if (title.nodeName === 'H2') {
                     toc.appendChild(li);
-                    var ul = document.createElement('ul');
-                    li.appendChild(ul);
                     lastH2 = ul;
                 }
-                else
+                else if (title.nodeName === 'H3') {
                     lastH2.appendChild(li);
+                    lastH3 = ul;
+                }
+                else
+                    lastH3.appendChild(li);
             }
 
             // Verb conjugator
