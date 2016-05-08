@@ -82,6 +82,10 @@ a {
     color: inherit;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
 .displayfigure {
     overflow: auto;
     width: 100%;
@@ -110,10 +114,11 @@ footer {
 
 #toc > li > a {
     text-decoration: none;
+    border-bottom: 2px solid black;
 }
 
 #toc > li > a:hover {
-    border-bottom: 1px solid black;
+    border-bottom: none;
 }
 
 #writingSystemTable tr > td {
