@@ -170,6 +170,15 @@ table.chess tr:nth-child(even)>td:nth-child(odd), table.chess tr:nth-child(odd)>
     background-image: url(images/verb.png);
 }
 
+.analysis > .subjectverb {
+    background-image: url(images/subjectverb.png);
+    background-size: 52.5px 24px, calc(50% - 30px) 2px, calc(50% - 30px) 2px;
+}
+
+.analysis > .subjectverb.long {
+    background-image: url(images/subjectverb.png), url(images/line.png), url(images/line.png);
+}
+
 .analysis > .verb.long {
     background-image: url(images/verb.png), url(images/line.png), url(images/line.png);
 }
