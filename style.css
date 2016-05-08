@@ -52,12 +52,15 @@ h4 > .k {
     font-size: 75px;
 }
 
-p, label, li, th, td, footer {
+p, label, li, th, td, footer, .analysis, b {
     font-family: 'Helvetica Neue', Helvetica, 'Nimbus Sans L', Arial, 'Liberation Sans', sans-serif;
 }
 
-p {
+p, .analysis {
     font-size: 22px;
+}
+
+p {
     text-align: justify;
 }
 
@@ -131,6 +134,43 @@ table.chess tr:nth-child(even)>td:nth-child(odd), table.chess tr:nth-child(odd)>
 .definition {
     margin-top: 16px;
     font-size: 16px;
+}
+
+
+
+
+.analysis {
+    margin-left: 32px;
+}
+
+.analysis > * {
+    min-width: 24px;
+    height: 55px;
+    text-align: center;
+    display: inline-block;
+    background-size: 24px, calc(50% - 15px) 2px, calc(50% - 15px) 2px;
+    background-repeat: no-repeat;
+    background-position: 50% 100%, 3px calc(100% - 12px), calc(100% - 3px) calc(100% - 12px);
+}
+
+.analysis > *.k {
+    height: 65px;
+}
+
+.analysis > .subject {
+    background-image: url(images/subject.png);
+}
+
+.analysis > .subject.long {
+    background-image: url(images/subject.png), url(images/line.png), url(images/line.png);
+}
+
+.analysis > .verb {
+    background-image: url(images/verb.png);
+}
+
+.analysis > .verb.long {
+    background-image: url(images/verb.png), url(images/line.png), url(images/line.png);
 }
 
 
