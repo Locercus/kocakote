@@ -172,6 +172,7 @@ table.chess tr:nth-child(even)>td:nth-child(odd), table.chess tr:nth-child(odd)>
 
 .analysis > .subjectverb {
     background-image: url(images/subjectverb.png);
+    min-width: 52.5px;
     background-size: 52.5px 24px, calc(50% - 30px) 2px, calc(50% - 30px) 2px;
 }
 
