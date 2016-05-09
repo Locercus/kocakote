@@ -148,7 +148,7 @@ table.chess tr:nth-child(even)>td:nth-child(odd), table.chess tr:nth-child(odd)>
     height: 55px;
     text-align: center;
     display: inline-block;
-    background-size: 24px, calc(50% - 15px) 2px, calc(50% - 15px) 2px;
+    background-size: 24px, calc(50% - 18px) 2px, calc(50% - 19px) 2px;
     background-repeat: no-repeat;
     background-position: 50% 100%, 3px calc(100% - 12px), calc(100% - 3px) calc(100% - 12px);
     margin-bottom: 16px;
@@ -189,6 +189,12 @@ table.chess tr:nth-child(even)>td:nth-child(odd), table.chess tr:nth-child(odd)>
 
 .analysis > .object.long {
     background-image: url(images/object.png), url(images/line.png), url(images/line.png);
+}
+
+.analysis > .squiggly {
+    background-image: url(images/squiggly.png);
+    background-position: 50% 100%;
+    background-repeat: repeat-x;
 }
 
 
