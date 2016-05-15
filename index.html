@@ -588,10 +588,11 @@
         <h2>Tools <span class="k">kolåba</span></h2>
         <select id="activeTool">
             <option value="verb">Verb conjugator</option>
+            <option value="number">Number constructor</option>
         </select>
 
         <div id="tools">
-            <div id="verbTool">
+            <div id="verbTool" class="twopane">
                 <div class="toolInput">
                     <div>
                         <label for="verbPersonPlurality">Plurality</label>
@@ -647,6 +648,22 @@
                 </div>
                 <input class="toolTextOutput" readonly value="titi">
             </div>
+            <div id="numberTool" class="twopane">
+                <div class="toolInput">
+                    <div>
+                        <label for="numberNumber">Number</label>
+                        <label for="numberType">Type</label>
+                    </div>
+                    <div>
+                        <input type="number" value="0" min="-17592186044415" max="17592186044415" id="numberNumber">
+                        <select id="numberType">
+                            <option value="cardinal">Cardinal</option>
+                            <option value="ordinal">Ordinal</option>
+                        </select>
+                    </div>
+                </div>
+                <input class="toolTextOutput" readonly value="toså">
+            </div>
         </div>
 
         <footer>
@@ -694,13 +711,31 @@
                     lastH3.appendChild(li);
             }
 
+            // Tools
+            var tools = $('#tools>*');
+            for (var i = 1; i < tools.length; i++)
+                tools[i].style.display = 'none';
+
+            $('#activeTool')[0].addEventListener('change', function() {
+                var val = selectVal('#activeTool');
+                var id = val + 'Tool';
+
+                for (var i = 0; i < tools.length; i++) {
+                    var tool = tools[i];
+                    if (tool.id === id)
+                        tool.style.display = '';
+                    else
+                        tool.style.display = 'none';
+                }
+            });
+
             // Verb conjugator
             var verbConjugator = function() {
                 var verbPersonPlurality = +selectVal('#verbPersonPlurality');
-                var verbPersonNumber = +selectVal('#verbPersonNumber');
-                var verbPersonAnimacy = $('#verbPersonAnimacy')[0].checked;
-                var verbSemantics = $('#verbSemantics')[0].value;
-                var verbTime = selectVal('#verbTime');
+                var verbPersonNumber    = +selectVal('#verbPersonNumber');
+                var verbPersonAnimacy   = $('#verbPersonAnimacy')[0].checked;
+                var verbSemantics       = $('#verbSemantics')[0].value;
+                var verbTime            = selectVal('#verbTime');
 
                 var str = '';
                 var pronounChars = ['td','kš','sč','nl'][verbPersonPlurality];
@@ -725,6 +760,57 @@
                     el.oninput = verbConjugator;
                 else
                     el.onchange = verbConjugator;
+            }
+
+            // Number tool
+            var numberTool = function() {
+                var number = Math.round($('#numberNumber')[0].value);
+                var type   = selectVal('#numberType');
+
+                var str = "";
+
+                if (number === 0)
+                    str = 'to';
+                else {
+                    var base16 = Math.abs(number).toString(16).split("").reverse().join("");
+                    var numerals = [ 'to', 'te', 'tæ', 'tø',
+                                     'tå', 'ta', 'ti', 'tu',
+                                     'ko', 'ke', 'kæ', 'kø',
+                                     'kå', 'ka', 'ki', 'ku' ];
+                    var modifiers = [ '',   'bo', 'be', 'bæ',
+                                      'bø', 'bå', 'ba', 'bi',
+                                      'bu', 'so', 'se' ];
+                    for (var i = 0; i < base16.length; i++) {
+                        var c = base16[i];
+                        var n = parseInt(c, 16);
+                        var numeral  = numerals[n];
+                        var modifier = modifiers[i];
+
+                        if (n === 1 && modifier !== '')
+                            numeral = '';
+
+                        if (n !== 0)
+                            str = numeral + modifier + str;
+                    }
+                }
+
+                if (type === 'cardinal')
+                    str += 'så';
+                else if (type === 'ordinal')
+                    str += 'se';
+
+                if (number < 0)
+                    str = 'ni' + str;
+
+                $('#numberTool>.toolTextOutput')[0].value = str;
+            };
+            var numberToolInputs = $('#numberTool>.toolInput>:last-child>*');
+            for (var i = 0; i < numberToolInputs.length; i++) {
+                var el = numberToolInputs[i];
+                if (el instanceof HTMLInputElement && el.type !== 'checkbox' && el.type !== 'radio')
+                    el.oninput = numberTool;
+                else
+                    el.onchange = numberTool;
             }
         </script>
     </body>

@@ -282,17 +282,16 @@ table.chess tr:nth-child(even)>td:nth-child(odd), table.chess tr:nth-child(odd)>
     font-size: 100px;
 }
 
-#verbTool {
+.twopane {
     display: flex;
     flex-wrap: wrap;
 }
 
-#verbTool > :not(:last-child) {
+.twopane > :not(:last-child) {
     margin-right: 24px;
 }
 
-#verbTool > .toolTextOutput {
-    margin-top: 16px;
+.twopane > .toolTextOutput {
     width: 250px;
     flex-grow: 1;
 }
